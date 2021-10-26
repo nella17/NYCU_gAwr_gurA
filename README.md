@@ -2,7 +2,9 @@
 
 ## Codebook
 
-modify from https://github.com/brianbbsu/BBQube
+> modify from https://github.com/brianbbsu/BBQube
+
+by nella17, hakkaz, iris2617
 
 ## Result
 
