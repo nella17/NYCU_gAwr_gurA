@@ -2,9 +2,11 @@
 
 ## Codebook
 
-> modify from https://github.com/brianbbsu/BBQube
-
 by nella17, hakkaz, iris2617
+
+### references
+- https://github.com/brianbbsu/BBQube
+- https://github.com/NCTU-PCCA
 
 ## Result
 
