@@ -3,7 +3,7 @@ using namespace std;
 #ifndef DEBUG
 #define fast ios::sync_with_stdio(0);cin.tie(0)
 #define endl '\n'
-#define cerr if(0);else cerr
+#define cerr if(1);else cerr
 #endif
 #define _ <<' '<<
 #define ALL(v) v.begin(),v.end()
