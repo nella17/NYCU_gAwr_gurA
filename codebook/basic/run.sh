@@ -1,6 +1,6 @@
 #!/bin/bash
 f=$1
-o=.${1%.*}
+o=.${f%.*}
 s=""
 if [ $# = 1 ] || [ $2 = 1 ]; then
   ARGS="-DDEBUG -I$HOME/include_debug"
