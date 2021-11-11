@@ -26,6 +26,7 @@ by nella17, hakkaz, iris2617
 
 |                           Training                           |    Date    | Solved/Total | A    | B       | C       | D       | E    | F       | G       | H    | I    | J    | K    | L    | M    |
 | :----------------------------------------------------------: | :--------: | :----------: | ---- | ------- | ------- | ------- | ---- | ------- | ------- | ---- | ---- | ---- | ---- | ---- | ---- |
+| [North American Southeast Regional 2019 (Div 1)](https://codeforces.com/gym/102423) | 2021/11/10 |     3/11     | .    | .       | .       | ***D*** | .    | .       | G       | H    | .    | J    | .    |      |      |
 | [2018-2019 ICPC Southwestern European Regional Programming Contest (SWERC 2018)](https://codeforces.com/gym/102465) | 2021/11/06 |     6/11     | A    | B       | .       | D       | E    | F       | .       | .    | .    | .    | K    |      |      |
 | [2018-2019 ICPC Northwestern European Regional Programming Contest (NWERC 2018)](https://codeforces.com/gym/102483) | 2021/11/03 |     3/11     | .    | ***B*** | ***C*** | .       | .    | .       | .       | H    | I    | .    | K    |      |      |
 | [2020-2021 ICPC Northwestern European Regional Programming Contest (NWERC 2020)](https://codeforces.com/gym/103049) | 2021/10/30 |     8/11     | A    | .       | C       | D       | E    | F       | .       | H    | I    | .    | K    |      |      |
