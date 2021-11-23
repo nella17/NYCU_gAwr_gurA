@@ -16,5 +16,6 @@ else
   set -eux
   time g++ -std=c++17 -Wall -Wextra -Wshadow \
     -Wconversion $ARGS $f -o $o$s
+  # -fsanitize=address -fsanitize=undefined
 fi
 time ./$o$s
