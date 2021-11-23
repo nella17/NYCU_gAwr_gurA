@@ -26,6 +26,7 @@ by nella17, hakkaz, iris2617
 
 |                           Training                           |    Date    | Solved/Total | ***A*** | ***B*** | ***C*** | ***D*** | ***E*** | ***F*** | ***G*** | ***H*** | ***I*** | ***J*** | ***K*** | ***L*** | ***M*** |
 | :----------------------------------------------------------: | :--------: | :----------: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: |
+| [2018-2019 CTU Open Contest](https://codeforces.com/gym/101954) | 2021/11/23 |     8/10     |    A    |    B    |    C    |    .    |    E    |    F    |    G    |    H    |    .    |    J    |         |         |         |
 | [2018-2019 ACM-ICPC Pacific Northwest Regional Contest (Div. 1)](https://codeforces.com/gym/101982) | 2021/11/17 |     9/13     |    A    |    B    |    C    |    D    |    .    |    F    |    G    |    H    |    .    |    J    |    .    |    L    |    .    |
 | [2018-2019 ACM-ICPC, Asia Nakhon Pathom Regional Contest](https://codeforces.com/gym/102091) | 2021/11/14 |     6/12     |    .    |    .    |    C    |    D    |    .    |    .    |    G    |    H    |    .    |    .    |    K    |    L    |         |
 | [North American Southeast Regional 2019 (Div 1)](https://codeforces.com/gym/102423) | 2021/11/10 |     3/11     |    .    |    .    |    .    | ***D*** |    .    |    .    |    G    |    H    | ***I*** |    J    |    .    |         |         |
