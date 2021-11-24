@@ -1,6 +1,7 @@
 #define FILL(a,v) memset(a,v,sizeof(a))
 struct suffix_array {
-  int box[MAXN], tp[MAXN], m;
+  int m, box[MAXN], tp[MAXN];
+  int sa[MAXN], ra[MAXN], he[MAXN];
   bool not_equ(int a, int b, int k, int n) {
     return ra[a] != ra[b] || a + k >= n ||
       b + k >= n || ra[a + k] != ra[b + k];
@@ -35,7 +36,6 @@ struct suffix_array {
       he[ra[j]] = k, k = max(0, k - 1);
     }
   }
-  int sa[MAXN], ra[MAXN], he[MAXN];
   void build(string s) {
     FILL(sa, 0), FILL(ra, 0), FILL(he, 0);
     FILL(box, 0), FILL(tp, 0), m = 256;

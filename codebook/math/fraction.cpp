@@ -1,3 +1,4 @@
+/* py: from fractions import Decimal, Fraction */
 struct fraction {
   ll n, d;
   fraction(ll _n = 0, ll _d = 1): n(_n), d(_d) {

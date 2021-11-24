@@ -9,8 +9,8 @@ else
   ARGS="-I$HOME/include"
 fi
 s="$s.$(md5sum $f | awk '{ print $1 }')"
-if [ -e "$o$s" ]; then
-  time 2>&1 echo "cached"
+if [ -e $o$s ]; then
+  time 2>&1 echo cached
 else
   rm $o* || true
   set -eux
