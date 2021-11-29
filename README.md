@@ -17,6 +17,7 @@ by nella17, hakkaz, iris2617
 
 |                           Contest                            |    Date    | Rank | Solved/Total | Penalty | ***A*** | ***B*** | ***C*** | ***D*** | ***E*** | ***F*** | ***G*** | ***H*** | ***I*** | ***J*** | ***K*** | ***L*** | ***M*** |
 | :----------------------------------------------------------: | :--------: | :--: | :----------: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: |
+| [ICPC 2021 Taipei Regional](https://icpc2021.ntub.edu.tw/final-scoreboard/) | 2021/11/28 |  14  |     7/13     |   852   |    A    |    B    |    C    |    D    |    .    |   (F)   |         |    .    |    I    |    J    |    .    |    .    |    M    |
 |            [TOPC 2021](https://topc2021.icpc.tw/)            | 2021/10/23 |  26  |     6/10     |   316   |    A    |    B    |    C    |    D    |   (E)   |   (F)   |    G    |    .    |    .    |    J    |         |         |         |
 | [NCPC 2021](https://web.archive.org/web/20211026062329/https://www2.nsysu.edu.tw/NCPC_scoreboard/NCPC2021_scoreboard.php) | 2021/10/16 |  7   |     8/12     |   759   |    A    |    B    |    C    |    D    |    .    |    .    |    .    |    H    |    I    |    J    |    .    |    L    |         |
 |      [YCPC 2021](https://github.com/mzshieh/2021-ycpc)       | 2021/09/07 |  4   |     7/13     |   982   |    .    |    .    |    C    |    .    |    E    |    .    |    .    |    H    |    I    |    J    |    .    |    L    |    M    |
