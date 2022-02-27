@@ -14,7 +14,7 @@ void traversal(int o, int l, int r) {
     for (auto e : tr[o])
         if (do_things(e))
             cnt++;
-    if (lb == rb) // record ans
+    if (l == r-1) // record ans
     else {
         int m = l + (r - l) / 2;
         int y = o+1;
