@@ -28,6 +28,7 @@ by nella17, hakkaz, iris2617
 
 |                           Training                           |    Date    | Solved/Total | ***A*** | ***B*** | ***C*** | ***D*** | ***E*** | ***F*** | ***G*** | ***H*** | ***I*** | ***J*** | ***K*** | ***L*** | ***M*** | ***N*** |
 | :----------------------------------------------------------: | :--------: | :----------: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: |
+| [2021 ICPC Southeastern Europe Regional Contest](https://codeforces.com/gym/103438) | 2022/02/19 |     5/14     |    A    |    .    |    .    |    .    |    .    |   (F)   |    G    |    .    |    .    |    J    | ***K*** |    L    |    .    |    N    |
 | [2015 ICPC Asia Singapore Regional Contest](https://vjudge.net/contest/475263) | 2022/01/07 |     5/11     |   (A)   |    .    |    C    |    .    |    E    |    F    |    G    |    .    |    .    |    J    |    .    |         |         |         |
 | [2018-2019 CTU Open Contest](https://codeforces.com/gym/101954) | 2021/11/23 |     8/10     |    A    |    B    |    C    |    .    |    E    |    F    |    G    |    H    |    .    |    J    |         |         |         |         |
 | [2018-2019 ACM-ICPC Pacific Northwest Regional Contest (Div. 1)](https://codeforces.com/gym/101982) | 2021/11/17 |     9/13     |    A    |    B    |    C    |    D    |    .    |    F    |    G    |    H    |    .    |    J    |    .    |    L    |    .    |         |
