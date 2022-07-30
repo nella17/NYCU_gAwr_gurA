@@ -1,60 +1,64 @@
+struct Treap;
+using TreapP = Treap*;
 struct Treap {
   int data, sz;
-  Treap *l, *r;
+  TreapP l, r;
   Treap(int k) : data(k), sz(1), l(0), r(0) {}
 };
-inline int sz(Treap *o) { return o ? o->sz : 0; }
-void pull(Treap *o) { o->sz = sz(o->l) + sz(o->r) + 1; }
-void push(Treap *o) {}
-Treap *merge(Treap *a, Treap *b) {
-  if (!a || !b) return a ? a : b;
+inline int sz(TreapP o) { return o ? o->sz : 0; }
+void pull(TreapP o) { o->sz = sz(o->l)+sz(o->r)+1; }
+void push(TreapP o) {}
+TreapP merge(TreapP a, TreapP b) {
+  if (!a or !b) return a ? a : b;
+  TreapP r; // new{ r <- ab }
   if (randint(sz(a)+sz(b)) < sz(a))
-    return push(a), a->r = merge(a->r, b), pull(a), a;
-  return push(b), b->l = merge(a, b->l), pull(b), b;
+       r = a, push(r), r->r = merge(a->r, b);
+  else r = b, push(r), r->l = merge(a, b->l);
+  return pull(r), r;
 }
-void split(Treap *o, Treap *&a, Treap *&b, int k) {
+void split(TreapP o, TreapP &a, TreapP &b, int k) {
   if (!o) return a = b = 0, void();
   push(o);
-  if (o->data <= k)
-    a = o, split(o->r, a->r, b, k), pull(a);
+  if (o->data <= k) // new { ab <- o }
+       a = o, split(o->r, a->r, b, k), pull(a);
   else b = o, split(o->l, a, b->l, k), pull(b);
 }
-void split2(Treap *o, Treap *&a, Treap *&b, int k) {
+void split2(TreapP o, TreapP &a, TreapP &b, int k) {
   if (sz(o) <= k) return a = o, b = 0, void();
   push(o);
-  if (sz(o->l) + 1 <= k)
+  if (sz(o->l) + 1 <= k) // new { ab <- o }
     a = o, split2(o->r, a->r, b, k - sz(o->l) - 1);
   else b = o, split2(o->l, a, b->l, k);
-  pull(o);
+  pull(o); // a b
 }
-Treap *kth(Treap *o, int k) {
+TreapP kth(TreapP o, int k) {
   if (k <= sz(o->l)) return kth(o->l, k);
   if (k == sz(o->l) + 1) return o;
   return kth(o->r, k - sz(o->l) - 1);
 }
-int Rank(Treap *o, int key) {
+int Rank(TreapP o, int key) {
   if (o->data < key)
     return sz(o->l) + 1 + Rank(o->r, key);
   else return Rank(o->l, key);
 }
-bool erase(Treap *&o, int k) {
+bool erase(TreapP &o, int k) {
   if (!o) return 0;
   if (o->data == k) {
-    Treap *t = o;
+    TreapP t = o;
     push(o), o = merge(o->l, o->r);
     delete t;
     return 1;
   }
-  Treap *&t = k < o->data ? o->l : o->r;
+  TreapP &t = k < o->data ? o->l : o->r;
   return erase(t, k) ? pull(o), 1 : 0;
 }
-void insert(Treap *&o, int k) {
-  Treap *a, *b;
+void insert(TreapP &o, int k) {
+  TreapP a, b;
   split(o, a, b, k);
   o = merge(a, merge(new Treap(k), b));
 }
-void interval(Treap *&o, int l, int r) {
-  Treap *a, *b, *c;
+void interval(TreapP &o, int l, int r) {
+  TreapP a, b, c;
   split2(o, a, b, l - 1), split2(b, b, c, r);
   // operate
   o = merge(a, merge(b, c));
