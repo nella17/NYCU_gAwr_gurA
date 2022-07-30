@@ -1,10 +1,10 @@
-#pragma GCC optimize("Ofast", "unroll-loops", "fast-math")
+#pragma GCC optimize("Ofast","unroll-loops","fast-math")
 #include<bits/stdc++.h>
 using namespace std;
 #ifndef DEBUG
-#define fast ios::sync_with_stdio(0);cin.tie(0)
+#define fast cin.tie(0)->sync_with_stdio(0)
 #define endl '\n'
-#define cerr if(1);else cerr
+#define cerr if(1); else cerr
 #endif
 #define _ <<' '<<
 #define ALL(v) v.begin(),v.end()
