@@ -1,5 +1,4 @@
 const int N = 1021;
-struct Cir{Pt O; double R;};
 struct CircleCover {
   int C; 
   Cir c[N];
