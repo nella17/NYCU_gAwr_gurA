@@ -30,7 +30,7 @@ private:
   void sais(int *s, int *sa, int *p, int *q, bool *t,
     int *c, int n, int z) {
     bool uniq = t[n - 1] = 1, neq;
-    int nn = 0, nmxz = -1, *nsa = sa + n, *ns = s + n,
+    int m = 0, nmxz = -1, *nsa = sa + n, *ns = s + n,
         lst = -1;
 
 #define MAGIC(XD)                               \
@@ -57,16 +57,16 @@ private:
       t[i] = (s[i] == s[i+1] ? t[i+1] : s[i] < s[i+1]);
     MAGIC( for (int i = 1; i <= n-1; i++)
       if (t[i] and !t[i-1])
-        sa[--x[s[i]]] = p[q[i] = nn++] = i );
+        sa[--x[s[i]]] = p[q[i] = m++] = i );
     for (int i = 0; i < n; i++)
       if (sa[i] and t[sa[i]] and !t[sa[i]-1]) {
         auto st = s + lst;
         auto sz = p[q[sa[i]] + 1] - sa[i];
-        neq = (lst < 0) or !equal(st, st+sz, s + sa[i]);
+        neq = (lst < 0) or !equal(st, st+sz, s+sa[i]);
         ns[q[lst = sa[i]]] = nmxz += neq;
       }
-    sais(ns,nsa, p + nn, q + n, t + n, c + z,nn,nmxz+1);
-    MAGIC(for (int i = nn - 1; i >= 0; i--)
+    sais(ns,nsa, p + m, q + n, t + n, c + z, m,nmxz+1);
+    MAGIC(for (int i = m - 1; i >= 0; i--)
             sa[--x[s[p[nsa[i]]]]] = p[nsa[i]]);
   }
 } sa;
