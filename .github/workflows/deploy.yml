@@ -1,0 +1,73 @@
+name: Build and Deploy
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  packages: write
+
+concurrency:
+  group: '${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
+  cancel-in-progress: true
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      builder: ${{ steps.diff.outputs.builder }}
+      codebook: ${{ steps.diff.outputs.codebook }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Set timezone to Asia/Taipei
+        uses: szenius/set-timezone@v1.0
+        with:
+          timezoneLinux: "Asia/Taipei"
+
+      - name: Check diff
+        id: diff
+        run: |
+          if ! git rev-parse --quiet --verify origin/last > /dev/null; then
+            builder=1
+            codebook=1
+          else
+            builder=$(git diff --name-only origin/last..main builder | wc -l | awk '{ print $1 }')
+            codebook=$(git diff --name-only origin/last..main codebook | wc -l | awk '{ print $1 }')
+          fi
+          echo "::set-output name=builder::${builder}"
+          echo "::set-output name=codebook::${codebook}"
+
+      - name: Check output
+        run: |
+          echo builder ${{ steps.diff.outputs.builder }}
+          echo codebook ${{ steps.diff.outputs.codebook }}
+
+  builder:
+    runs-on: ubuntu-latest
+    needs: prepare
+    steps:
+      - name: Checkout
+        if: ${{ needs.prepare.outputs.builder > 0 }}
+        uses: actions/checkout@v3
+
+      - name: Get diff
+        if: ${{ needs.prepare.outputs.builder > 0 }}
+        run: echo Bulder ${{ needs.prepare.outputs.builder }}
+
+  codebook:
+    runs-on: ubuntu-latest
+    needs: [prepare, builder]
+    if: ${{ needs.prepare.outputs.codebook > 0 }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Get diff
+        run: echo Codebook ${{ needs.prepare.outputs.codebook }}
