@@ -2,5 +2,5 @@ FROM alpine
 
 RUN apk add texlive-full font-noto-cjk ttf-inconsolata
 
-ENV FILENAME=codebook.tex
-CMD xelatex $FILENAME && xelatex $FILENAME
+ENV DIRECTORY=codebook FILENAME=codebook.tex
+CMD cd $DIRECTORY && xelatex $FILENAME && xelatex $FILENAME
