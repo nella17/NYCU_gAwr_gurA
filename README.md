@@ -2,6 +2,8 @@
 
 ## Codebook
 
+[Latest version](https://github.com/nella17/NYCU_gAwr_gurA/blob/codebook/codebook.pdf)
+
 by nella17, hakkaz, iris2617
 
 ### references
