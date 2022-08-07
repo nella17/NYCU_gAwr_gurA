@@ -76,6 +76,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: latest
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
@@ -84,6 +85,8 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
   codebook:
     runs-on: ubuntu-latest
@@ -97,7 +100,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Generate Codebook
-        uses: ghcr.io/nella17/nycu_gawr_gura:main
+        uses: ghcr.io/nella17/nycu_gawr_gura:main@latest
 
       - name: Prepare dir
         run: |
