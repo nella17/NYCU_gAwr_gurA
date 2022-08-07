@@ -38,7 +38,7 @@ jobs:
       - name: Check diff
         id: diff
         run: |
-          if ! git rev-parse --quiet --verify origin/last > /dev/null; then
+          if ! git rev-parse --quiet --verify origin/last > /dev/null || [ "$(git diff --name-only origin/last..main .github | wc -l)" != 0 ]; then
             builder=1
             codebook=1
           else
