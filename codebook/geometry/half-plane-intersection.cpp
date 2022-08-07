@@ -5,7 +5,7 @@ bool isin( Line l0, Line l1, Line l2 ) {
 }
 /* If no solution, check: 1. ret.size() < 3
  * Or more precisely, 2. interPnt(ret[0], ret[1])
- * in all the lines. (use (l.sd - l.ft) ^ (p - l.ft) > 0
+ * in all the lines. (use (l.sd - l.ft) ^ (p - l.ft) >0
  */
 /* --^-- Line.ft --^-- Line.sd --^-- */
 vector<Line> halfPlaneInter(vector<Line> lines) {
@@ -17,27 +17,27 @@ vector<Line> halfPlaneInter(vector<Line> lines) {
     ata[i] = atan2(d.sd, d.ft);
   }
   sort(ord.begin(), ord.end(), [&](int i, int j) {
-      if ( is_zero(ata[i] - ata[j]) )
+      if ( isZ(ata[i] - ata[j]) )
           return cross(lines[i].sd - lines[i].ft,
             lines[j].sd - lines[i].ft) < 0;
       return ata[i] < ata[j];
   });
   vector<Line> fin;
   for (int i = 0; i < sz; ++i)
-    if (!i or !is_zero(ata[ord[i]] - ata[ord[i-1]]))
+    if (!i or !isZ(ata[ord[i]] - ata[ord[i-1]]))
       fin.emplace_back(lines[ord[i]]);
   deque<Line> dq;
-  for (int i = 0; i < SZ(fin); i++){
-    while(SZ(dq)>=2&&!isin(fin[i],dq[SZ(dq)-2],dq.back()))
-      dq.pop_back();
-    while(SZ(dq)>=2&&!isin(fin[i],dq[0],dq[1]))
-      dq.pop_front();
+  for (int i = 0; i < fin.size(); i++){
+    while(dq.size() >= 2 and !isin(fin[i],
+        dq[dq.size()-2], dq.back()))  dq.pop_back();
+    while(dq.size() >= 2 and !isin(fin[i],
+        dq[0], dq[1]))  dq.pop_front();
     dq.push_back(fin[i]);
   }
-  while(SZ(dq)>=3&&!isin(dq[0],dq[SZ(dq)-2],dq.back()))
-    dq.pop_back();
-  while(SZ(dq)>=3&&!isin(dq.back(), dq[0], dq[1]))
-    dq.pop_front();
+  while(dq.size() >= 3 and !isin(dq[0],
+        dq[dq.size()-2], dq.back()))  dq.pop_back();
+  while(dq.size() >= 3 and !isin(dq.back(),
+        dq[0], dq[1]))  dq.pop_front();
   vector<Line> res(ALL(dq));
   return res;
 }

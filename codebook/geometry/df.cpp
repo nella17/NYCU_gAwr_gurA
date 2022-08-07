@@ -3,23 +3,23 @@ using Pt = pair<Dt,Dt>;
 using Vt = Pt;
 using Line = pair<Pt,Pt>;
 const double eps = 1e-9;
-bool is_zero(Dt x) { return -eps < x and x < eps; }
-Pt operator+(Pt a,Pt b){return Pt{a.ft+b.ft,a.sd+b.sd};}
-Pt operator-(Pt a,Pt b){return Pt{a.ft-b.ft,a.sd-b.sd};}
-Pt operator*(Pt a,Dt k){return Pt{a.ft*k,a.sd*k};}
-Pt operator/(Pt a,Dt k){return Pt{a.ft/k,a.sd/k};}
+bool isZ(Dt x) { return -eps < x and x < eps; }
+Pt operator+(Pt a,Pt b){return {a.ft+b.ft,a.sd+b.sd};}
+Pt operator-(Pt a,Pt b){return {a.ft-b.ft,a.sd-b.sd};}
+Pt operator*(Pt a,Dt k){return { a.ft*k, a.sd*k }; }
+Pt operator/(Pt a,Dt k){return { a.ft/k, a.sd/k }; }
 Dt dot(Vt a, Vt b)   { return a.ft*b.ft + a.sd*b.sd; }
 Dt cross(Vt a, Vt b) { return a.ft*b.sd - a.sd*b.ft; }
 Dt abs2(Vt a) { return dot(a,a); }
 ld abs(Vt a) { return sqrt(dot(a,a));}
-int sign(Dt x) { return is_zero(x) ? 0 : x > 0 ? 1 : -1; }
+int sign(Dt x) { return isZ(x) ? 0 : x > 0 ? 1 : -1; }
 int ori(Pt p1, Pt p2, Pt p3) {
   return sign(cross(p2 - p1, p3 - p2));}
 bool collinearity(Pt p1, Pt p2, Pt p3) {
-  return is_zero(cross(p1 - p3, p2 - p3)); }
+  return isZ(cross(p1 - p3, p2 - p3)); }
 bool btw(Pt p1, Pt p2, Pt p3) {
   if(!collinearity(p1, p2, p3)) return 0;
-  return is_zero(dot(p1 - p3, p2 - p3));
+  return isZ(dot(p1 - p3, p2 - p3));
 }
 bool seg_intersect(Pt p1, Pt p2, Pt p3, Pt p4) {
   int a123 = ori(p1, p2, p3);
