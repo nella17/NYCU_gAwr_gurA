@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: Build, Generate and Publish
 
 on:
   workflow_dispatch:
@@ -90,8 +90,24 @@ jobs:
     needs: [prepare, builder]
     if: ${{ always() && needs.prepare.outputs.codebook > 0 }}
     steps:
+      - name: Get diff
+        run: echo Codebook ${{ needs.prepare.outputs.codebook }}
+
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Get diff
-        run: echo Codebook ${{ needs.prepare.outputs.codebook }}
+      - name: Generate Codebook
+        uses: ghcr.io/nella17/nycu_gawr_gura:main
+
+      - name: Prepare dir
+        run: |
+          mkdir public
+          mv codebook/codebook.pdf public
+
+      - name: Publish Latex
+        uses: crazy-max/ghaction-github-pages@v3
+        with:
+          target_branch: codebook
+          build_dir: public
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
