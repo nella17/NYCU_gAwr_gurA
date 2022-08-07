@@ -33,17 +33,17 @@ private:
     int nn = 0, nmxz = -1, *nsa = sa + n, *ns = s + n,
         lst = -1;
 
-#define MAGIC(XD)                                     \
-  fill_n(sa, n, 0);                                   \
-  copy_n(c, z, x);                                    \
-  XD;                                                 \
-  copy_n(c, z - 1, x + 1);                            \
-  for (int i = 0; i < n; i++)                         \
-    if (sa[i] && !t[sa[i] - 1])                       \
-      sa[x[s[sa[i] - 1]]++] = sa[i] - 1;              \
-  copy_n(c, z, x);                                    \
-  for (int i = n - 1; i >= 0; i--)                    \
-    if (sa[i] && t[sa[i] - 1])                        \
+#define MAGIC(XD)                               \
+  fill_n(sa, n, 0);                             \
+  copy_n(c, z, x);                              \
+  XD;                                           \
+  copy_n(c, z - 1, x + 1);                      \
+  for (int i = 0; i < n; i++)                   \
+    if (sa[i] and !t[sa[i] - 1])                \
+      sa[x[s[sa[i] - 1]]++] = sa[i] - 1;        \
+  copy_n(c, z, x);                              \
+  for (int i = n - 1; i >= 0; i--)              \
+    if (sa[i] and t[sa[i] - 1])                 \
       sa[--x[s[sa[i] - 1]]] = sa[i] - 1;
 
     fill_n(c, z, 0);
@@ -53,22 +53,19 @@ private:
       for (int i = 0; i < n; i++) sa[--c[s[i]]] = i;
       return;
     }
-    for (int i = n - 2; i >= 0; i--)
-      t[i] = (s[i] == s[i + 1] ? t[i + 1]
-                               : s[i] < s[i + 1]);
-    MAGIC(for (int i = 1; i <= n - 1;
-               i++) if (t[i] && !t[i - 1])
-            sa[--x[s[i]]] = p[q[i] = nn++] = i);
+    for (int i = n-2; i >= 0; i--)
+      t[i] = (s[i] == s[i+1] ? t[i+1] : s[i] < s[i+1]);
+    MAGIC( for (int i = 1; i <= n-1; i++)
+      if (t[i] and !t[i-1])
+        sa[--x[s[i]]] = p[q[i] = nn++] = i );
     for (int i = 0; i < n; i++)
-      if (sa[i] && t[sa[i]] && !t[sa[i] - 1]) {
-        neq = (lst < 0) ||
-          !equal(s + lst,
-            s + lst + p[q[sa[i]] + 1] - sa[i],
-            s + sa[i]);
+      if (sa[i] and t[sa[i]] and !t[sa[i]-1]) {
+        auto st = s + lst;
+        auto sz = p[q[sa[i]] + 1] - sa[i];
+        neq = (lst < 0) or !equal(st, st+sz, s + sa[i]);
         ns[q[lst = sa[i]]] = nmxz += neq;
       }
-    sais(ns, nsa, p + nn, q + n, t + n, c + z, nn,
-      nmxz + 1);
+    sais(ns,nsa, p + nn, q + n, t + n, c + z,nn,nmxz+1);
     MAGIC(for (int i = nn - 1; i >= 0; i--)
             sa[--x[s[p[nsa[i]]]]] = p[nsa[i]]);
   }

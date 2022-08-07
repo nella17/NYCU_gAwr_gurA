@@ -1,4 +1,4 @@
-int z[MAXn];
+int z[MAXN];
 void make_z(string s) {
   int l = 0, r = 0;
   for (int i = 1, sz = s.size(); i < sz; i++) {

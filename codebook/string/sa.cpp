@@ -3,8 +3,8 @@ struct suffix_array {
   int m, box[MAXN], tp[MAXN];
   int sa[MAXN], ra[MAXN], he[MAXN];
   bool not_equ(int a, int b, int k, int n) {
-    return ra[a] != ra[b] || a + k >= n ||
-      b + k >= n || ra[a + k] != ra[b + k];
+    return ra[a] != ra[b] or a + k >= n or
+      b + k >= n or ra[a + k] != ra[b + k];
   }
   void radix(int *key, int *it, int *ot, int n) {
     fill_n(box, m, 0);

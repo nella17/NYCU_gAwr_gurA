@@ -15,7 +15,8 @@ else
   rm $o* || true
   set -eux
   time g++ -std=c++17 -Wall -Wextra -Wshadow \
-    -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -D_GLIBCXX_DEBUG_PEDANTIC_ASSERT \
+    -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC \
+    -D_GLIBCXX_DEBUG_PEDANTIC_ASSERT \
     -Wconversion $ARGS $f -o $o$s
   # -fsanitize=address -fsanitize=undefined
 fi

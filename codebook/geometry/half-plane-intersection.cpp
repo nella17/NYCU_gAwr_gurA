@@ -1,33 +1,33 @@
-bool isin( Line l0, Line l1, Line l2 ){
+bool isin( Line l0, Line l1, Line l2 ) {
   // Check inter(l1, l2) in l0
-  pdd p = intersect(l1.X,l1.Y,l2.X,l2.Y);
-  return cross(l0.Y - l0.X,p - l0.X) > eps;
+  Pt p = intersect(l1.ft, l1.sd, l2.ft, l2.sd);
+  return cross(l0.sd - l0.ft, p - l0.ft) > eps;
 }
 /* If no solution, check: 1. ret.size() < 3
  * Or more precisely, 2. interPnt(ret[0], ret[1])
- * in all the lines. (use (l.Y - l.X) ^ (p - l.X) > 0
+ * in all the lines. (use (l.sd - l.ft) ^ (p - l.ft) > 0
  */
-/* --^-- Line.X --^-- Line.Y --^-- */
-vector<Line> halfPlaneInter(vector<Line> lines){
+/* --^-- Line.ft --^-- Line.sd --^-- */
+vector<Line> halfPlaneInter(vector<Line> lines) {
   int sz = lines.size();
-  vector<double> ata(sz),ord(sz);
-  for(int i=0; i<sz; ++i) {
+  vector<ld> ata(sz), ord(sz);
+  for(int i = 0; i < sz; ++i) {
     ord[i] = i;
-    pdd d = lines[i].Y - lines[i].X;
-    ata[i] = atan2(d.Y, d.X);
+    Vt d = lines[i].sd - lines[i].ft;
+    ata[i] = atan2(d.sd, d.ft);
   }
-  sort(ord.begin(), ord.end(), [&](int i,int j){
-      if( fabs(ata[i] - ata[j]) < eps )
-      return (cross(lines[i].Y-lines[i].X, 
-            lines[j].Y-lines[i].X))<0;
+  sort(ord.begin(), ord.end(), [&](int i, int j) {
+      if ( is_zero(ata[i] - ata[j]) )
+          return cross(lines[i].sd - lines[i].ft, 
+            lines[j].sd - lines[i].ft) < 0;
       return ata[i] < ata[j];
-      });
+  });
   vector<Line> fin;
-  for (int i=0; i<sz; ++i)
-    if (!i || fabs(ata[ord[i]] - ata[ord[i-1]]) > eps)
-      fin.pb(lines[ord[i]]);
+  for (int i = 0; i < sz; ++i)
+    if (!i or !is_zero(ata[ord[i]] - ata[ord[i-1]]))
+      fin.emplace_back(lines[ord[i]]);
   deque<Line> dq;
-  for (int i=0; i<SZ(fin); i++){
+  for (int i = 0; i < SZ(fin); i++){
     while(SZ(dq)>=2&&!isin(fin[i],dq[SZ(dq)-2],dq.back())) 
       dq.pop_back();
     while(SZ(dq)>=2&&!isin(fin[i],dq[0],dq[1]))

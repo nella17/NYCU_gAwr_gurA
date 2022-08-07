@@ -11,11 +11,10 @@ struct MCMF { // 0-base
     q.push(s), inq.reset(), inq[s] = 1;
     up[s] = mx - flow, past[s] = 0, dis[s] = 0;
     while (!q.empty()) {
-      ll u = q.front();
-      q.pop(), inq[u] = 0;
+      ll u = q.front(); q.pop(), inq[u] = 0;
       if (!up[u]) continue;
       for (auto &e : G[u])
-        if (e.flow != e.cap &&
+        if (e.flow != e.cap and
           dis[e.to] > dis[u] + e.cost) {
           dis[e.to] = dis[u] + e.cost, past[e.to] = &e;
           up[e.to] = min(up[u], e.cap - e.flow);
@@ -33,16 +32,15 @@ struct MCMF { // 0-base
   ll MinCostMaxFlow(ll _s, ll _t, ll &cost) {
     s = _s, t = _t, cost = 0;
     ll flow = 0;
-    while (BellmanFord(flow, cost))
-      ;
+    while (BellmanFord(flow, cost)) ;
     return flow;
   }
-  void init(ll _n, ll _mx) {
+  void init(ll _n, ll _mx = INF) {
     n = _n, mx = _mx;
     for (int i = 0; i < n; ++i) G[i].clear();
   }
   void add_edge(ll a, ll b, ll cap, ll cost) {
-    G[a].pb(edge{a, b, cap, 0, cost, G[b].size()});
-    G[b].pb(edge{b, a, 0, 0, -cost, G[a].size() - 1});
+    G[a].eb(edge{ a, b, cap, 0, cost, G[b].size() });
+    G[b].eb(edge{ b, a, 0, 0, -cost, G[a].size()-1 });
   }
 };

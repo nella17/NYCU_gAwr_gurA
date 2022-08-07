@@ -5,10 +5,10 @@ struct MaxFlow { // 0-base
   vector<edge> G[MAXN];
   int s, t, dis[MAXN], cur[MAXN], n;
   int dfs(int u, int cap) {
-    if (u == t || !cap) return cap;
-    for (int &i = cur[u]; i < (int)G[u].size(); ++i) {
+    if (u == t or !cap) return cap;
+    for (int &i = cur[u]; i < (int)G[u].size(); i++) {
       edge &e = G[u][i];
-      if (dis[e.to] == dis[u] + 1 && e.flow != e.cap) {
+      if (dis[e.to] == dis[u] + 1 and e.flow != e.cap) {
         int df = dfs(e.to, min(e.cap - e.flow, cap));
         if (df) {
           e.flow += df;
@@ -21,14 +21,13 @@ struct MaxFlow { // 0-base
     return 0;
   }
   bool bfs() {
-    FILL(dis, -1);
+    memset(dis, -1, sizeof(dis));
     queue<int> q;
     q.push(s), dis[s] = 0;
-    while (!q.empty()) {
-      int tmp = q.front();
-      q.pop();
+    while (q.size()) {
+      int tmp = q.front(); q.pop();
       for (auto &u : G[tmp])
-        if (!~dis[u.to] && u.flow != u.cap) {
+        if (dis[u.to] != -1 and u.flow != u.cap) {
           q.push(u.to);
           dis[u.to] = dis[tmp] + 1;
         }
@@ -39,7 +38,7 @@ struct MaxFlow { // 0-base
     s = _s, t = _t;
     int flow = 0, df;
     while (bfs()) {
-      FILL(cur, 0);
+      memset(cur, 0, sizeof(cur));
       while (df = dfs(s, INF)) flow += df;
     }
     return flow;
@@ -53,7 +52,7 @@ struct MaxFlow { // 0-base
       for (auto &j : G[i]) j.flow = 0;
   }
   void add_edge(int u, int v, int cap) {
-    G[u].pb(edge{v, cap, 0, (int)G[v].size()});
-    G[v].pb(edge{u, 0, 0, (int)G[u].size() - 1});
+    G[u].emplace_back(edge{ v, cap, 0, (int)G[v].size() });
+    G[v].emplace_back(edge{ u, 0, 0, (int)G[u].size()-1 });
   }
 };

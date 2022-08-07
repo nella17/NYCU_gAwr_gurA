@@ -14,7 +14,7 @@ bool cmp(Pt a, Pt b) { // integer
 }
 bool cmp(Pt a, Pt b) { // float
   a = a - center, b = b - center;
-  if(fabs(atan2(a.sd, a.ft) - atan2(b.sd, b.ft)) > eps)
-    return atan2(a.sd, a.ft) < atan2(b.sd, b.ft);
-  return abs(a) < abs(b);
+  if(is_zero(atan2(a.sd, a.ft) - atan2(b.sd, b.ft)))
+    return abs(a) < abs(b);
+  return atan2(a.sd, a.ft) < atan2(b.sd, b.ft);
 }
