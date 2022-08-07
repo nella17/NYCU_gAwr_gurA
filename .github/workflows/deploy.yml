@@ -63,7 +63,7 @@ jobs:
     if: ${{ needs.prepare.outputs.builder > 0 }}
     steps:
       - name: Get diff
-        run: echo Bulder ${{ needs.prepare.outputs.builder }}
+        run: echo Builder ${{ needs.prepare.outputs.builder }}
 
       - name: Checkout
         uses: actions/checkout@v3
