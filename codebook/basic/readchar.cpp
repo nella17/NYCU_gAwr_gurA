@@ -4,5 +4,4 @@ inline char readchar() {
   static char *p = buf, *end = buf;
   if (p == end) end = buf +
     fread_unlocked(buf, 1, size, stdin), p = buf;
-  return *p++;
-}
+  return *p++; }
