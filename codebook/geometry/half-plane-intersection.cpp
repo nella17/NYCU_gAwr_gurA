@@ -18,7 +18,7 @@ vector<Line> halfPlaneInter(vector<Line> lines) {
   }
   sort(ord.begin(), ord.end(), [&](int i, int j) {
       if ( is_zero(ata[i] - ata[j]) )
-          return cross(lines[i].sd - lines[i].ft, 
+          return cross(lines[i].sd - lines[i].ft,
             lines[j].sd - lines[i].ft) < 0;
       return ata[i] < ata[j];
   });
@@ -28,7 +28,7 @@ vector<Line> halfPlaneInter(vector<Line> lines) {
       fin.emplace_back(lines[ord[i]]);
   deque<Line> dq;
   for (int i = 0; i < SZ(fin); i++){
-    while(SZ(dq)>=2&&!isin(fin[i],dq[SZ(dq)-2],dq.back())) 
+    while(SZ(dq)>=2&&!isin(fin[i],dq[SZ(dq)-2],dq.back()))
       dq.pop_back();
     while(SZ(dq)>=2&&!isin(fin[i],dq[0],dq[1]))
       dq.pop_front();
@@ -36,7 +36,7 @@ vector<Line> halfPlaneInter(vector<Line> lines) {
   }
   while(SZ(dq)>=3&&!isin(dq[0],dq[SZ(dq)-2],dq.back()))
     dq.pop_back();
-  while(SZ(dq)>=3&&!isin(dq.back(), dq[0], dq[1])) 
+  while(SZ(dq)>=3&&!isin(dq.back(), dq[0], dq[1]))
     dq.pop_front();
   vector<Line> res(ALL(dq));
   return res;
