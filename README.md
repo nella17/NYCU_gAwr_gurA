@@ -2,7 +2,7 @@
 
 ## Codebook
 
-[Latest version](https://github.com/nella17/NYCU_gAwr_gurA/blob/codebook/codebook.pdf)
+[Latest version](https://nella17.tw/NYCU_gAwr_gurA/codebook.pdf)
 
 by nella17, hakkaz, iris2617
 
