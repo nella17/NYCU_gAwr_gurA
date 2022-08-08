@@ -1,9 +1,9 @@
 struct Treap;
 using TreapP = Treap*;
 struct Treap {
-  int data, sz;
+  int sz, data;
   TreapP l, r;
-  Treap(int k) : data(k), sz(1), l(0), r(0) {}
+  Treap(int k): sz(1), data(k), l(0), r(0) {}
 };
 inline int sz(TreapP o) { return o ? o->sz : 0; }
 void pull(TreapP o) { o->sz = sz(o->l)+sz(o->r)+1; }
