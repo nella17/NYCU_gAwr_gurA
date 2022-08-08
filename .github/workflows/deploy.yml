@@ -46,8 +46,8 @@ jobs:
             if [ "$(git diff --name-only origin/last..main .github | wc -l)" != 0 ]; then
               codebook=1
             else
-            codebook=$(git diff --name-only origin/last..main codebook | wc -l | awk '{ print $1 }')
-          fi
+              codebook=$(git diff --name-only origin/last..main codebook public | wc -l | awk '{ print $1 }')
+            fi
           fi
           echo "::set-output name=builder::${builder}"
           echo "::set-output name=codebook::${codebook}"
@@ -111,7 +111,6 @@ jobs:
 
       - name: Prepare dir
         run: |
-          mkdir public
           mv codebook/codebook.pdf public
 
       - name: Publish Latex
