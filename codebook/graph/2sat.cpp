@@ -8,7 +8,7 @@ struct SAT { // 0-base
     for (int i = 0; i < n*2; ++i) G[i].clear();
   }
   void add_edge(int a, int b) { G[a].eb(b); }
-  int rv(int a) { return a > n ? a - n : a + n; }
+  int rv(int a) { return a >= n ? a - n : a + n; }
   void add_clause(int a, int b) {
     add_edge(rv(a), b), add_edge(rv(b), a); }
   void dfs(int u) {
