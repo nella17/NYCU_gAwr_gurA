@@ -1,4 +1,4 @@
-int z[MAXN];
+int z[MAXN*2+1];
 int Manacher(string tmp) {
   string s = "&";
   int l = 0, r = 0, x, ans;
