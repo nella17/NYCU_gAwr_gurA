@@ -1,8 +1,9 @@
-pll extgcd(ll a, ll b) {
-  if(b == 0) return pll{1, 0};
-  else {
-    ll p = a / b;
-    auto [x,y] = extgcd(b, a % b);
-    return pll{y, x - y * p};
+tuple<ll,ll,ll> extgcd(ll a, ll b) {
+  ll s = 1, t = 0, u = 0, v = 1;
+  while (b) {
+    ll q = a / b;
+    swap(a -= q * b, b);
+    swap(s -= q * t, t);
+    swap(u -= q * v, v);
   }
-}
+  return { s, u, a }; }
