@@ -27,7 +27,8 @@ by nella17, hakkaz, iris2617
 
 ## Training
 
-- [2021-2022 NYCU PCCA Schedule and Training Contest List - HackMD](https://hackmd.io/@truckski/BJQN-3HGY)
+- [2021-2022 NYCU PCCA Schedule and Training Contest List - HackMD](https://hackmd.io/@truckski/S1ha2nMWj)
+- [2022-2023 NYCU PCCA Schedule and Training Contest List - HackMD](https://hackmd.io/@truckski/BJQN-3HGY)
 
 |                           Training                           |    Date    | Solved/Total | ***A*** | ***B*** | ***C*** | ***D*** | ***E*** | ***F*** | ***G*** | ***H*** | ***I*** | ***J*** | ***K*** | ***L*** | ***M*** | ***N*** |
 | :----------------------------------------------------------: | :--------: | :----------: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: |
