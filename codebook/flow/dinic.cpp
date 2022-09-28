@@ -27,7 +27,7 @@ struct MaxFlow { // 0-base
     while (q.size()) {
       int tmp = q.front(); q.pop();
       for (auto &u : G[tmp])
-        if (dis[u.to] != -1 and u.flow != u.cap) {
+        if (dis[u.to] == -1 and u.flow != u.cap) {
           q.push(u.to);
           dis[u.to] = dis[tmp] + 1;
         }
