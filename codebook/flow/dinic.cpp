@@ -8,7 +8,7 @@ struct MaxFlow { // 0-base
     if (u == t or !cap) return cap;
     for (int &i = cur[u]; i < (int)G[u].size(); i++) {
       edge &e = G[u][i];
-      if (dis[e.to] == dis[u] + 1 and e.flow != e.cap) {
+      if (dis[e.to] == dis[u]+1 and e.flow != e.cap) {
         int df = dfs(e.to, min(e.cap - e.flow, cap));
         if (df) {
           e.flow += df;
@@ -52,7 +52,7 @@ struct MaxFlow { // 0-base
       for (auto &j : G[i]) j.flow = 0;
   }
   void add_edge(int u, int v, int cap) {
-    G[u].emplace_back(edge{ v, cap, 0, (int)G[v].size() });
-    G[v].emplace_back(edge{ u, 0, 0, (int)G[u].size()-1 });
+    G[u].eb(edge{ v, cap, 0, (int)G[v].size() });
+    G[v].eb(edge{ u, 0, 0, (int)G[u].size()-1 });
   }
 };

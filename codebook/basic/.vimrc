@@ -6,7 +6,8 @@ syntax enable
 colo delek
 no ; :
 no <C-l> :nohl<CR>
-au filetype c,cpp ino <F9> <ESC>:w<CR>:!~/run '%'<CR>
+au filetype c,cpp ino <F9> <ESC>:w<CR>:!~/r.sh '%'<CR>
+au filetype c,cpp  no <F9> <ESC>:w<CR>:!~/r.sh '%'<CR>
 let leader = '\'
 function! Tg()
     s,^\(\s*\)\?,\1// ,e
