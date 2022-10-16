@@ -1,5 +1,3 @@
-#include "extgcd.hpp"
-
 template <typename T> struct M {
   static T MOD; // change to constexpr if already known
   T v;
@@ -17,10 +15,10 @@ template <typename T> struct M {
   // change implementation to extgcd if MOD is not prime
   M operator/(M b) { return *this * (b ^ (MOD - 2)); }
   friend M operator^(M a, ll b) {
-    M ans(1);
+    M r(1);
     for (; b; b >>= 1, a *= a)
-      if (b & 1) ans *= a;
-    return ans;
+      if (b & 1) r *= a;
+    return r;
   }
   M operator+=(const M &b) {
     if ((v += b.v) >= MOD) v -= MOD;
