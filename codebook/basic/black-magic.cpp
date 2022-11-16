@@ -8,7 +8,7 @@ using rkt = tree<T, U, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 mt19937 rng((int)chrono::steady_clock::now().time_since_epoch().count());
 // [0,n), [l,r]
 template<typename T> T randint(T l, T r) { return uniform_int_distribution<T>(l,r)(rng); }
-template<typename T> T randint(T n) { return randint(T(0),T(n-1)); }
+auto randint(auto n) { return randint(0,n-1); }
 int main() {
   heap h1, h2; h1.push(1), h1.push(3);
   h2.push(2), h2.push(4); h1.join(h2);
