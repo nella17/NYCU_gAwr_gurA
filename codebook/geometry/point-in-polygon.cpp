@@ -1,32 +1,8 @@
-#include <bits/stdc++.h>
- 
-#include <ext/pb_ds/assoc_container.hpp>
-#include <ext/pb_ds/tree_policy.hpp>
-using namespace std;
-using namespace __gnu_pbds;
- 
-template <typename T>
-using rbt =
-    tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
- 
 using Double = __float128;
 using Point = pair<Double, Double>;
 #define x first
 #define y second
- 
-Point operator+(const Point &a, const Point &b) {
-    return {a.x + b.x, a.y + b.y};
-}
-Point operator-(const Point &a, const Point &b) {
-    return {a.x - b.x, a.y - b.y};
-}
-Double dot(Point u, Point v) {
-    return u.x * v.x + u.y * v.y;
-}
-Double cross(Point u, Point v) {
-    return u.x * v.y - u.y * v.x;
-}
- 
+
 int n, m;
 vector<Point> poly;
 vector<Point> query;
@@ -50,7 +26,7 @@ bool operator<(Segment u, Segment v) {
     if (yu != yv) return yu < yv;
     return u.id < v.id;
 }
-rbt<Segment> st;
+rkt<Segment> st;
  
 struct Event {
     int type;  // +1 insert seg, -1 remove seg, 0 query
@@ -63,7 +39,7 @@ bool operator<(Event a, Event b) {
     return a.y < b.y;
 }
 vector<Event> events;
- 
+
 void solve() {
     set<Double> xs;
     set<Point> ps;
@@ -122,10 +98,9 @@ void solve() {
         }
     }
 }
- 
+
 int main() {
-    cin.tie(0);
-    cin.sync_with_stdio(0);
+    cin.tie(0); cin.sync_with_stdio(0);
  
     cin >> n >> m;
     poly = vector<Point>(n);
