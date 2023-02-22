@@ -25,12 +25,10 @@ struct MaxFlow { // 0-base
     queue<int> q;
     q.push(s), dis[s] = 0;
     while (q.size()) {
-      int tmp = q.front(); q.pop();
-      for (auto &u : G[tmp])
-        if (dis[u.to] == -1 and u.flow != u.cap) {
-          q.push(u.to);
-          dis[u.to] = dis[tmp] + 1;
-        }
+      int x = q.front(); q.pop();
+      for (auto &u : G[x])
+        if (dis[u.to] == -1 and u.flow != u.cap)
+          q.push(u.to), dis[u.to] = dis[x] + 1;
     }
     return dis[t] != -1;
   }
@@ -45,10 +43,10 @@ struct MaxFlow { // 0-base
   }
   void init(int _n) {
     n = _n;
-    for (int i = 0; i < n; ++i) G[i].clear();
+    for (int i = 0; i < n; i++) G[i].clear();
   }
   void reset() {
-    for (int i = 0; i < n; ++i)
+    for (int i = 0; i < n; i++)
       for (auto &j : G[i]) j.flow = 0;
   }
   void add_edge(int u, int v, int cap) {
