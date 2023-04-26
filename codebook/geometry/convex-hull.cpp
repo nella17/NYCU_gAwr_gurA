@@ -1,7 +1,7 @@
 void convex_hull(vector<Pt> &dots) {
   sort(dots.begin(), dots.end());
   vector<Pt> A(1, dots[0]);
-  const int sz = dots.size()
+  const int sz = dots.size();
   for(int c = 0; c < 2; reverse(ALL(dots)), c++)
     for(int i = 1, t = A.size(); i < sz;
             A.emplace_back(dots[i++]))
