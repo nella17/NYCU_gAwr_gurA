@@ -36,6 +36,6 @@ Pt intersect(Pt p1, Pt p2, Pt p3, Pt p4) {
   Dt a124 = cross(p2 - p1, p4 - p1);
   return (p4 * a123 - p3 * a124) / (a123 - a124);
 }
-Vt perp(Vt a) { return Vt{ -a.ft, a.sd }; }
+Vt perp(Vt a) { return Vt{ -a.sd, a.ft }; }
 Pt foot(Pt a, Pt b, Pt p) {
     return intersect(a, b, p, p + perp(b-a)); }
