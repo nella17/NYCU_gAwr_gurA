@@ -1,5 +1,5 @@
 void convex_hull(vector<Pt> &dots) {
-  sort(dots.begin(), dots.end());
+  sort(ALL(dots));
   vector<Pt> A(1, dots[0]);
   const int sz = dots.size();
   for(int c = 0; c < 2; reverse(ALL(dots)), c++)
