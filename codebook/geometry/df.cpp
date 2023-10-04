@@ -19,7 +19,7 @@ bool collinearity(Pt p1, Pt p2, Pt p3) {
   return isZ(cross(p1 - p3, p2 - p3)); }
 bool btw(Pt p1, Pt p2, Pt p3) {
   if(!collinearity(p1, p2, p3)) return 0;
-  return isZ(dot(p1 - p3, p2 - p3));
+  return sign(dot(p1 - p3, p2 - p3)) <= 0;
 }
 bool seg_intersect(Pt p1, Pt p2, Pt p3, Pt p4) {
   int a123 = ori(p1, p2, p3);
@@ -37,5 +37,5 @@ Pt intersect(Pt p1, Pt p2, Pt p3, Pt p4) {
   return (p4 * a123 - p3 * a124) / (a123 - a124);
 }
 Vt perp(Vt a) { return Vt{ -a.sd, a.ft }; }
-Pt foot(Pt a, Pt b, Pt p) {
-    return intersect(a, b, p, p + perp(b-a)); }
+Pt projection(Pt a, Pt b, Pt p) {
+    return (b - a) * dot(p - a, b - a) / abs2(b - a); }
