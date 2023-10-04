@@ -1,15 +1,28 @@
-struct MaxFlow { // 0-base
+template<int MAXV, typename T = int, T INF = INT_MAX>
+struct Dinic { // 0-base
   struct edge {
-    int to, cap, flow, rev;
+    int to; size_t rev; T cap, flow;
   };
-  vector<edge> G[MAXN];
-  int s, t, dis[MAXN], cur[MAXN], n;
-  int dfs(int u, int cap) {
+  vector<edge> G[MAXV];
+  int n, s, t, dis[MAXV]; size_t cur[MAXV];
+  void init(int _n) {
+    n = _n;
+    for (int i = 0; i < n; i++) G[i].clear();
+  }
+  void reset() {
+    for (int i = 0; i < n; i++)
+      for (auto &j : G[i]) j.flow = 0;
+  }
+  void add_edge(int u, int v, T cap) {
+    G[u].eb(edge{ v, G[v].size(), cap, 0 });
+    G[v].eb(edge{ u, G[u].size()-1, 0, 0 });
+  }
+  T dfs(int u, T cap) {
     if (u == t or !cap) return cap;
-    for (int &i = cur[u]; i < (int)G[u].size(); i++) {
+    for (auto &i = cur[u]; i < G[u].size(); i++) {
       edge &e = G[u][i];
       if (dis[e.to] == dis[u]+1 and e.flow != e.cap) {
-        int df = dfs(e.to, min(e.cap - e.flow, cap));
+        T df = dfs(e.to, min(e.cap - e.flow, cap));
         if (df) {
           e.flow += df;
           G[e.to][e.rev].flow -= df;
@@ -21,7 +34,7 @@ struct MaxFlow { // 0-base
     return 0;
   }
   bool bfs() {
-    memset(dis, -1, sizeof(dis));
+    fill_n(dis, n, -1);
     queue<int> q;
     q.push(s), dis[s] = 0;
     while (q.size()) {
@@ -32,25 +45,13 @@ struct MaxFlow { // 0-base
     }
     return dis[t] != -1;
   }
-  int maxflow(int _s, int _t) {
+  T maxflow(int _s, int _t) {
     s = _s, t = _t;
-    int flow = 0, df;
+    T flow = 0, df;
     while (bfs()) {
-      memset(cur, 0, sizeof(cur));
-      while (df = dfs(s, INF)) flow += df;
+      fill_n(cur, n, -1);
+      while ((df = dfs(s, INF))) flow += df;
     }
     return flow;
-  }
-  void init(int _n) {
-    n = _n;
-    for (int i = 0; i < n; i++) G[i].clear();
-  }
-  void reset() {
-    for (int i = 0; i < n; i++)
-      for (auto &j : G[i]) j.flow = 0;
-  }
-  void add_edge(int u, int v, int cap) {
-    G[u].eb(edge{ v, cap, 0, (int)G[v].size() });
-    G[v].eb(edge{ u, 0, 0, (int)G[u].size()-1 });
   }
 };
