@@ -4,7 +4,7 @@ struct BoundedFlow { // 0-base
     int to; size_t rev; T cap, flow;
   };
   vector<edge> G[MAXV];
-  int n, s, t, dis[MAXV]; size_t cur[MAXV]; T cnt[MAXV];
+  int n, s, t, dis[MAXV]; size_t cur[MAXV];T cnt[MAXV];
   void init(int _n) {
     n = _n;
     for (int i = 0; i < n + 2; ++i)
