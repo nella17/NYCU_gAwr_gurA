@@ -1,5 +1,7 @@
-set nocp nu rnu cul ru ai cin si sta
-set sc stal=2 ls=2 so=5 ts=4 sw=4 sts=4 et
+set nocp nu rnu cul ai ci cin si sta
+set sc si ts=4 sw=4 sts=4 bs=2 et
+set hls sm is ic scs bg=dark
+set ru stal=2 ls=2 so=5 wrap lbr
 set hls sm is ic scs wrap lbr bg=dark
 filetype plugin indent on
 syntax enable

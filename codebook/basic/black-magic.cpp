@@ -9,6 +9,16 @@ mt19937 rng((int)chrono::steady_clock::now().time_since_epoch().count());
 // [0,n), [l,r]
 template<typename T> T randint(T l, T r) { return uniform_int_distribution<T>(l,r)(rng); }
 auto randint(auto n) { return randint(0,n-1); }
+// comparator overload
+auto cmp = [](seg a, seg b){ return a.func() < b.func(); };
+set<seg, decltype(cmp)> s(cmp);
+map<seg, int, decltype(cmp)> mp(cmp);
+priority_queue<seg, vector<seg>, decltype(cmp)> pq(cmp); // max heap
+struct hasher { // hash func overload
+  size_t operator()(const pii &p) const {
+    return p.ft * 2 + p.sd * 3; }
+}; // T = pii, operator==
+unordered_map<pii, int, hasher> hsh;
 int main() {
   heap h1, h2; h1.push(1), h1.push(3);
   h2.push(2), h2.push(4); h1.join(h2);

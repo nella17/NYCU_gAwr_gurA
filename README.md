@@ -10,6 +10,7 @@ by nella17, hakkaz, iris2617
 - https://github.com/brianbbsu/BBQube
 - https://github.com/NCTU-PCCA
 - https://github.com/ToxicPie/NaCl
+- https://github.com/koosaga/DeobureoMinkyuParty
 
 ## Result
 
